@@ -1,0 +1,39 @@
+name: Director Worker V2
+
+on:
+  repository_dispatch:
+    types: [dispatch-job]
+  workflow_dispatch: # Allow manual trigger for testing
+
+jobs:
+  run_agent:
+    name: Autonomous Agent
+    runs-on: ubuntu-latest
+    timeout-minutes: 15 # Hard limit to prevent loops
+    permissions:
+      contents: read
+    
+    env:
+      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+      AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+      AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Execute Director Agent
+        run: npx tsx src/worker.ts --job-id "${{ github.event.client_payload.job_id }}"
