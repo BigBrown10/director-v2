@@ -303,7 +303,7 @@ export function JobForm() {
                                         ) : (
                                             <Button
                                                 type="button"
-                                                variant="solid"
+                                                variant="destructive"
                                                 className="w-12 h-12 p-0 bg-red-600 hover:bg-red-700 text-white animate-pulse"
                                                 onClick={stopRecording}
                                                 title="Stop Recording"
