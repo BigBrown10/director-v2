@@ -12,6 +12,7 @@
     "@remotion/bundler": "^4.0.419",
     "@remotion/renderer": "^4.0.419",
     "@supabase/supabase-js": "^2.95.3",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.33.0",
     "ghost-cursor": "^1.4.2",
@@ -23,6 +24,7 @@
     "react-dom": "19.2.3",
     "remotion": "^4.0.419",
     "tailwind-merge": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7",
     "zod": "^4.3.6"
   },
   "devDependencies": {
