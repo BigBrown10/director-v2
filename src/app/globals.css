@@ -1,26 +1,85 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Cyberpunk Palette */
+  --background: #030308; /* Very dark engine black/blue */
+  --foreground: #e0fafe; /* Holographic white/cyan tint */
+  
+  --primary: #00f3ff; /* Neon Cyan */
+  --primary-foreground: #000000;
+  
+  --secondary: #ff00ff; /* Neon Magenta */
+  --secondary-foreground: #000000;
+
+  --accent: #bc13fe; /* Electric Purple */
+  --accent-foreground: #ffffff;
+  
+  --destructive: #ff3333; /* Neon Red */
+  --destructive-foreground: #ffffff;
+  
+  --muted: #0f172a; /* Dark Tech Blue */
+  --muted-foreground: #64748b;
+  
+  --card: #0a0a15ab; /* Glassy Dark */
+  --card-foreground: #e0fafe;
+  
+  --popover: #0a0a15;
+  --popover-foreground: #e0fafe;
+  
+  --border: #1e293b;
+  --input: #1e293b;
+  --ring: #00f3ff;
+  
+  --radius: 0rem; /* Sharp edges for engine feel */
+  
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: calc(var(--radius) - 1px);
+  --radius-lg: var(--radius);
+  
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+  background-image: 
+    linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px; /* Grid effect */
 }
