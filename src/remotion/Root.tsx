@@ -1,4 +1,4 @@
-import { Composition } from 'remotion';
+import { registerRoot, Composition } from 'remotion';
 import { AgentComposition, AgentCompositionSchema } from './Composition';
 import "./style.css"; // Ensure tailwind/globals are loaded if needed, or just basic reset
 
@@ -34,3 +34,5 @@ export const RemotionRoot: React.FC = () => {
         </>
     );
 };
+
+registerRoot(RemotionRoot);
