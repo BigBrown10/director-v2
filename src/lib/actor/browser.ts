@@ -9,7 +9,7 @@ export interface ActorSession {
 
 export async function launchBrowser(): Promise<ActorSession> {
     const browser = await chromium.launch({
-        headless: false, // For debugging, initially false. In production/container this will be true or controlled by env.
+        headless: true, // For debugging, initially false. In production/container this will be true or controlled by env.
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
@@ -22,7 +22,7 @@ export async function launchBrowser(): Promise<ActorSession> {
 
     // Create videos directory if it doesn't exist (handled by caller or ensure here if simple)
     // relying on relative path for this demo
-    const videoDir = path.resolve(process.cwd(), 'videos');
+    const videoDir = path.resolve(process.cwd(), 'public/videos');
 
     const context = await browser.newContext({
         viewport: { width: 3840, height: 2160 }, // 4K Resolution
